@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dad0ra17rsr8c"]
+
+[ext_resource type="Script" path="res://WorldBuilder.gd" id="1_gm8d1"]
+[ext_resource type="PackedScene" uid="uid://iln0w038mewe" path="res://tile.tscn" id="2_230id"]
+[ext_resource type="Resource" uid="uid://81gky70e527" path="res://data/tiles/tile_types.tres" id="3_au7wq"]
+[ext_resource type="PackedScene" uid="uid://tiw80cx2nvsp" path="res://generated_tile.tscn" id="3_dh7ib"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mq57i"]
+
+[node name="WorldBuilder" type="Node"]
+script = ExtResource("1_gm8d1")
+generated_tile_scene = ExtResource("3_dh7ib")
+tile_properties = ExtResource("3_au7wq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.554758, 0.832012, 0, -0.832012, 0.554758, 14.5682, 13.4197, 31.1078)
+fov = 96.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.18277, -24)
+
+[node name="Tile" parent="." instance=ExtResource("2_230id")]
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+visible = false
+mesh = SubResource("CapsuleMesh_mq57i")

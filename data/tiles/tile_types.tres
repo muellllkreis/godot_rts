@@ -1,0 +1,47 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://81gky70e527"]
+
+[sub_resource type="GDScript" id="GDScript_vha23"]
+script/source = "var tile_array = [\"grass\", \"grass2\", \"dirt\", \"sand\", \"stone\", \"water\"]
+
+var tile_reference = {
+	\"grass\": {
+		\"name\": \"grass\",
+		\"model\": \"grass_tile.glb\",
+		\"color\": \"#6d8c32\",
+		\"r\": 109, \"g\": 140, \"b\": 50
+	},
+	\"grass2\": {
+		\"name\": \"grass\",
+		\"model\": \"different_grass_tile.glb\",
+		\"color\": \"#b4ba47 \"	,
+		\"r\": 180, \"g\": 186, \"b\": 71
+	},
+	\"dirt\": {
+		\"name\": \"dirt\",
+		\"model\": \"dirt_tile.glb\",
+		\"color\": \"#9c656c\",
+		\"r\": 156, \"g\": 101, \"b\": 108
+	},
+	\"sand\": {
+		\"name\": \"sand\",
+		\"model\": \"sand_tile.glb\",
+		\"color\": \"#f2b63d\",
+		\"r\": 242, \"g\": 182, \"b\": 61
+	},
+	\"stone\": {
+		\"name\": \"stone\",
+		\"model\": \"stone_tile.glb\",
+		\"color\": \"#cfcfc4\",
+		\"r\": 207, \"g\": 207, \"b\": 196
+	},
+	\"water\": {
+		\"name\": \"dirt\",
+		\"model\": \"stone_tile.glb\",
+		\"color\": \"#6d8c32\",
+		\"r\": 109, \"g\": 140, \"b\": 50
+	}
+}
+"
+
+[resource]
+script = SubResource("GDScript_vha23")

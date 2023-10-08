@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://tiw80cx2nvsp"]
+
+[ext_resource type="Script" path="res://MeshInstance.gd" id="1_q484w"]
+
+[node name="GeneratedTile" type="Node3D"]
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+script = ExtResource("1_q484w")

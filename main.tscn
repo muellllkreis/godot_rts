@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://dr1m5ooc5t3r"]
+
+[ext_resource type="Script" path="res://CameraController.gd" id="1_vn6gc"]
+[ext_resource type="PackedScene" uid="uid://cudj0tqatr8pm" path="res://assets/fire.glb" id="2_ne445"]
+[ext_resource type="PackedScene" uid="uid://vp6rt3vh4gy4" path="res://unit.tscn" id="2_wegf4"]
+[ext_resource type="PackedScene" uid="uid://cga6vfsa80aqb" path="res://assets/monument.glb" id="3_gyrp4"]
+[ext_resource type="PackedScene" uid="uid://3yj4f1b4cueo" path="res://assets/tree.glb" id="4_ldxg6"]
+[ext_resource type="PackedScene" uid="uid://c5yyh8d8k1k8o" path="res://assets/trunk.glb" id="5_b028c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ldvy"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dr7c"]
+size = Vector3(60, 1, 60)
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground"]
+shape = SubResource("BoxShape3D_4ldvy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground"]
+mesh = SubResource("BoxMesh_2dr7c")
+
+[node name="CameraController" type="Node3D" parent="World"]
+script = ExtResource("1_vn6gc")
+movement_speed = 20
+rotation_speed = 20
+
+[node name="Elevation" type="Node3D" parent="World/CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="World/CameraController/Elevation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Placeholders" type="Node" parent="World"]
+
+[node name="Campfire" type="StaticBody3D" parent="World/Placeholders"]
+
+[node name="Pivot" type="Node3D" parent="World/Placeholders/Campfire"]
+
+[node name="fire" parent="World/Placeholders/Campfire/Pivot" instance=ExtResource("2_ne445")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.500445, 16.9818)
+
+[node name="Monument" type="StaticBody3D" parent="World/Placeholders"]
+
+[node name="Node3D" type="Node3D" parent="World/Placeholders/Monument"]
+
+[node name="monument" parent="World/Placeholders/Monument/Node3D" instance=ExtResource("3_gyrp4")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -13.3229, -0.175944, -14.4463)
+
+[node name="Tree" type="StaticBody3D" parent="World/Placeholders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.602795, 0)
+
+[node name="Node3D" type="Node3D" parent="World/Placeholders/Tree"]
+
+[node name="tree" parent="World/Placeholders/Tree/Node3D" instance=ExtResource("4_ldxg6")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 10.0646, 0, -10.7641)
+
+[node name="tree2" parent="World/Placeholders/Tree/Node3D" instance=ExtResource("4_ldxg6")]
+transform = Transform3D(0.711496, 0, 0.551157, 0, 0.9, 0, -0.551157, 0, 0.711496, 8.16591, 0, -14.1523)
+
+[node name="tree3" parent="World/Placeholders/Tree/Node3D" instance=ExtResource("4_ldxg6")]
+transform = Transform3D(-0.022662, 0, 0.649605, 0, 0.65, 0, -0.649605, 0, -0.022662, 12.3474, 0.121136, -13.4183)
+
+[node name="Trunk" type="StaticBody3D" parent="World/Placeholders"]
+
+[node name="Node3D" type="Node3D" parent="World/Placeholders/Trunk"]
+
+[node name="trunk" parent="World/Placeholders/Trunk/Node3D" instance=ExtResource("5_b028c")]
+transform = Transform3D(0.867938, 0.446711, 0.217104, -0.457626, 0.889145, 0, -0.193037, -0.0993524, 0.976148, -18.3712, 0.423297, 9.5871)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 19, 0)
+shadow_enabled = true
+
+[node name="Unit" parent="." instance=ExtResource("2_wegf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09421, 0)

@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr1m5ooc5t3r"]
+
+[ext_resource type="Script" path="res://CameraController.gd" id="1_vn6gc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ldvy"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dr7c"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3iaf3"]
+albedo_color = Color(1, 0.14902, 0.266667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c714c"]
+material = SubResource("StandardMaterial3D_3iaf3")
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground"]
+shape = SubResource("BoxShape3D_4ldvy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground"]
+mesh = SubResource("BoxMesh_2dr7c")
+
+[node name="Box" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9791, 0, 16.8181)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box2" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98083, 0, 16.8181)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box3" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98083, 0, -13.1871)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box4" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5192, 0, -13.1871)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box5" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08086, 0, -1.62086)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box6" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7278, 0, 5.74309)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box7" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4837, 0, 5.74309)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="Box8" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4837, 0, 5.74309)
+mesh = SubResource("BoxMesh_c714c")
+
+[node name="CameraController" type="Node3D" parent="World"]
+script = ExtResource("1_vn6gc")
+movement_speed = 20
+rotation_speed = 20
+
+[node name="Elevation" type="Node3D" parent="World/CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="World/CameraController/Elevation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 19, 0)
+shadow_enabled = true

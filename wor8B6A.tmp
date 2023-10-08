@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dad0ra17rsr8c"]
+
+[ext_resource type="Script" path="res://WorldBuilder.gd" id="1_gm8d1"]
+[ext_resource type="PackedScene" uid="uid://iln0w038mewe" path="res://tile.tscn" id="2_230id"]
+
+[node name="WorldBuilder" type="Node"]
+script = ExtResource("1_gm8d1")
+tile_scene = ExtResource("2_230id")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.524551, 0.851379, 0, -0.851379, 0.524551, 14.5682, 13.4197, 31.1078)
+fov = 96.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.18277, 0)
+
+[node name="Tile" parent="." instance=ExtResource("2_230id")]
+script = null
